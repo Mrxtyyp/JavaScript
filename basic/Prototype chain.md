@@ -9,3 +9,35 @@ When accessing the attributes of an object, if this attribute does not exist ins
 **Features:** JavaScript object is passed by reference, each new object entity created does not have its own prototype copy. When modifying the prototype, the related objects will also inherit this change.
 
 ![prototype chain](images/image.png)
+
+### Prototype modification and rewriting
+
+```js
+function Person(name) {
+  this.name = name;
+}
+// modification
+Person.prototype.getName = function () {};
+var p = new Person("hello");
+console.log(p.__proto__ === Person.prototype); // true
+console.log(p.__proto__ === p.constructor.prototype); // true
+// rewriting
+Person.prototype = {
+  getName: function () {},
+};
+var p = new Person("hello");
+console.log(p.__proto__ === Person.prototype); // true
+console.log(p.__proto__ === p.constructor.prototype); // false
+```
+
+It can be seen that the constructor of p does not point to Person when modifying the prototype, because when directly assigning values to the prototype Object of Person, its constructor points to the root constructor Object, so at this time p. constructor = = = Object , not p. constructor = = = Person . If you want to be established, you must use constructor to point it back:
+
+```js
+Person.prototype = {
+  getName: function () {},
+};
+var p = new Person("hello");
+p.constructor = Person;
+console.log(p.__proto__ === Person.prototype); // true
+console.log(p.__proto__ === p.constructor.prototype); // true
+```
