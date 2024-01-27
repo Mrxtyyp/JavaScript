@@ -41,3 +41,43 @@ p.constructor = Person;
 console.log(p.__proto__ === Person.prototype); // true
 console.log(p.__proto__ === p.constructor.prototype); // true
 ```
+
+### Prototype chain pointing
+
+```js
+p.__proto__; // Person.prototype
+Person.prototype.__proto__; // Object.prototype
+p.__proto__.__proto__; //Object.prototype
+p.__proto__.constructor.prototype.__proto__; // Object.prototype
+Person.prototype.constructor.prototype.__proto__; // Object.prototype
+p1.__proto__.constructor; // Person
+Person.prototype.constructor; // Person
+```
+
+```js
+p.__proto__; // Person.prototype
+Person.prototype.__proto__; // Object.prototype
+p.__proto__.__proto__; //Object.prototype
+p.__proto__.constructor.prototype.__proto__; // Object.prototype
+Person.prototype.constructor.prototype.__proto__; // Object.prototype
+p1.__proto__.constructor; // Person
+Person.prototype.constructor; // Person
+```
+
+### What is the end point of the prototype chain? How do I print the end point of the prototype chain?
+
+Because Object is a constructor, the end of the prototype chain is Object. prototype.**proto** , and Object. prototype.**proto ** = = = null//true , so, the end point of the prototype chain is null . All prototypes on the prototype chain are objects, and all objects are ultimately created Object constructed, and Object. prototype the next level is Object. prototype.**proto** .
+
+### How to obtain the attributes on the non-prototype chain of an object?
+
+Use hasOwnProperty () method to determine whether an attribute belongs to the attributes of the prototype chain:
+
+```js
+function iterate(obj) {
+  var res = [];
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) res.push(key + ": " + obj[key]);
+  }
+  return res;
+}
+```
