@@ -8,3 +8,11 @@ For a equality oparator, if the types of the compare of two sides are different,
 4. Determine whether the two types are string and number, if so, the string will converted to the number
 5. Determine whether the one of both is boolean, if so, the boolean will be converted to the number and then do judge
 6. Determine whether the one of both is object and the other is string or number or symbol, if so, the object will be converted to the raw type and then make a judgement.
+
+## What are the conversion rules for other values to strings?
+
+- For Null and Undefined types, null is converted to "null" and undefined is converted to "undefined".
+- For Boolean types, true is converted to "true" and false is converted to "false".
+- For Number types, the values are converted directly, but very small and very large numbers will be in exponential form.
+- Symbol values are converted directly, but only explicit casts are allowed. Using implicit casts results in an error.
+- For ordinary objects, unless toString() method is defined, Object.prototype.toString() will be called to return the value of the internal property [[Class]], such as "[object Object]". If the object has its own toString() method, it will be called when it is being stringified and then will use its return value.
