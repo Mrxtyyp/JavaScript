@@ -16,3 +16,16 @@ For a equality oparator, if the types of the compare of two sides are different,
 - For Number types, the values are converted directly, but very small and very large numbers will be in exponential form.
 - Symbol values are converted directly, but only explicit casts are allowed. Using implicit casts results in an error.
 - For ordinary objects, unless toString() method is defined, Object.prototype.toString() will be called to return the value of the internal property [[Class]], such as "[object Object]". If the object has its own toString() method, it will be called when it is being stringified and then will use its return value.
+
+## What are the rules for converting other values to numerical values?
+
+- The value of Undefined is converted to NaN.
+- Values of type Null are converted to 0.
+- Boolean values of type, true converted to 1, false converted to 0.
+- String value conversion is the same as using the Number() function, if it contains a non-numeric value, it is converted to NaN, and the empty string is 0.
+- Values of type Symbol cannot be converted to numbers and will cause an error.
+- Objects (including arrays) are first converted to the corresponding primitive type value, and if a non-numeric primitive type value is returned, it is then coerced to a number by following the rules above.
+
+To convert a value to the corresponding primitive type value, the abstract operation ToPrimitive first checks (via the internal operation DefaultValue) whether the value has a valueOf() method. If it has and returns a primitive type value, cast it with that value. If not, the return value of toString(), if present, is used to cast.
+
+If both valueOf() and toString() do not return primitive type values, a TypeError error will occur.
