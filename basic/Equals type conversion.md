@@ -29,3 +29,17 @@ For a equality oparator, if the types of the compare of two sides are different,
 To convert a value to the corresponding primitive type value, the abstract operation ToPrimitive first checks (via the internal operation DefaultValue) whether the value has a valueOf() method. If it has and returns a primitive type value, cast it with that value. If not, the return value of toString(), if present, is used to cast.
 
 If both valueOf() and toString() do not return primitive type values, a TypeError error will occur.
+
+## What are the conversion rules for other values to Boolean values?
+
+The following are false values:
+
+1. undefined
+2. null
+3. false
+4. +0
+5. -0
+6. NaN
+7. ""
+
+The result of the boolean coercion of a falsy value is false. Logically, anything other than a falsy value should be a truthy value.
