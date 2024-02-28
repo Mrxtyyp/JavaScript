@@ -14,3 +14,9 @@ Post and Get are two methods of HTTP requests. The differences are as follows:
 **Request length:** Due to the limitation on URL length in browsers, it can affect the length of the get request when sending data. This restriction is specified by the browser, not by RFC.
 
 **Parameter type:** The parameter passing of post supports more data types.
+
+## The difference between POST and PUT requests
+
+A PUT request is to send data to the server to modify the content of the data, but it does not increase the type of data, which means that no matter how many times a PUT operation is performed, the result is not different. (Can be understood as updating data on a regular basis)
+
+A POST request is a request to send data to the server, which changes the type of data and other resources, and creates new content. (Can be understood as creating data)
