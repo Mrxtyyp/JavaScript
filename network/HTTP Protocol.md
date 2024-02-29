@@ -20,3 +20,33 @@ Post and Get are two methods of HTTP requests. The differences are as follows:
 A PUT request is to send data to the server to modify the content of the data, but it does not increase the type of data, which means that no matter how many times a PUT operation is performed, the result is not different. (Can be understood as updating data on a regular basis)
 
 A POST request is a request to send data to the server, which changes the type of data and other resources, and creates new content. (Can be understood as creating data)
+
+## Common HTTP request and response headers
+
+Common HTTP Request Headers:
+● Accept: The types of content that browsers can handle
+● Accept-Charset: The character set that the browser can display
+● Accept-Encoding：The compression encoding that browsers can handle
+● Accept-Language：The language currently set by the browser
+● Connection： The type of connection between browser and server
+● Cookie：Any cookies set on the current page
+● Host：The domain where the requested page is located
+● Referer： The URL of the requested page
+● User-Agent： The user agent string for the browser
+
+Common response headers for HTTP Response Headers:
+● Date：Indicates the time when the message was sent, and the format for describing the time is defined by rfc822
+● server: Server name
+● Connection：Type of connection between browser and server
+● Cache-Control：Control HTTP caching
+● content-type: What MIME type does the following document belong to
+
+There are four common Content-Type attribute values:
+（1）application/x-www-form-urlencoded：
+application/x-www-form-urlencoded: A browser's native form form. If the enctype attribute is not set, it will eventually submit data as application/x-www-form-urlencoded. The data submitted in this way is placed in the body, and the data is encoded in the way of key1=val1&key2=val2. Both key and val perform URL transcoding.
+（2）multipart/form-data：
+multipart/form-data: This method is also a common POST submission method, which is commonly used when forms upload files.
+（3）application/json：
+application/json: The server message body is a serialized JSON string.
+（4）text/xml：
+text/xml: This mode is mainly used to submit data in XML format.
