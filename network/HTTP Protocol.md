@@ -50,3 +50,20 @@ multipart/form-data: This method is also a common POST submission method, which 
 application/json: The server message body is a serialized JSON string.
 （4）text/xml：
 text/xml: This mode is mainly used to submit data in XML format.
+
+## HTTP status code 304 is more or less good
+
+In order to improve the speed of website access, the server specifies the cache mechanism for some of the pages previously visited, when the client requests these pages here, the server will determine whether the page is the same as before according to the cache content, if the same, it will directly return 304, at this time the client calls the cache content, without having to download the second time.
+
+Status code 304 should not be considered an error, but rather a response by the server when the client has a cache.
+
+Search engine spiders tend to prefer sites with frequently updated content sources. The crawl frequency of the website is adjusted by the status code returned by the crawl of the website in a specific time. If the website has been in the state of 304 for a certain period of time, then the spider may reduce the number of times the website is crawled. On the contrary, if the frequency of the website changes very fast, each crawl can get new content, then over time, the return rate will increase.
+
+Reasons for generating more 304 status codes:
+● The page update period is long or not updated
+● Pure static pages or force static html generation
+
+Too many 304 status codes may cause the following problems:
+● Site snapshot stops;
+● Inclusion decrease;
+● Weight drop
