@@ -67,3 +67,14 @@ Too many 304 status codes may cause the following problems:
 ● Site snapshot stops;
 ● Inclusion decrease;
 ● Weight drop
+
+## Common HTTP request methods
+
+● GET: Get data from the server
+● POST：Submitting an entity to a specified resource usually results in a modification of the server resource.
+● PUT：Upload files, update data;
+● DELETE：Delete objects on the server;
+● HEAD：Gets the header of the message, and does not return the body of the message compared to GET;
+● OPTIONS：Ask for supported request methods for cross-domain requests;
+● CONNECT：It is required to establish a tunnel when communicating with the proxy server and use the tunnel for TCP communication.
+● TRACE: The request received by the server is displayed for testing or diagnosis.
