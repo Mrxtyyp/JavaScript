@@ -78,3 +78,13 @@ Too many 304 status codes may cause the following problems:
 ● OPTIONS：Ask for supported request methods for cross-domain requests;
 ● CONNECT：It is required to establish a tunnel when communicating with the proxy server and use the tunnel for TCP communication.
 ● TRACE: The request received by the server is displayed for testing or diagnosis.
+
+## OPTIONS Request method and application scene
+
+OPTIONS is one of the HTTP request methods in addition to GET and POST.
+
+The OPTIONS method is a functional option that can be used in the Request/response communication process to obtain the resource identified by the Request-URI. In this way, the client can decide what actions are necessary for a specific resource before making a request for that resource, or understand the performance of the server. The response of the request method cannot be cached.
+
+The OPTIONS request method has two main uses:
+● Gets all HTTP request methods supported by the server;
+● Used to check access permissions. For example, in CORS cross-domain resource sharing, for complex requests, the OPTIONS method is used to send sniff requests to check whether the access permission to the specified resource is available.
