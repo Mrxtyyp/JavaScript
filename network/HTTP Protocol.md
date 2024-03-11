@@ -88,3 +88,17 @@ The OPTIONS method is a functional option that can be used in the Request/respon
 The OPTIONS request method has two main uses:
 ● Gets all HTTP request methods supported by the server;
 ● Used to check access permissions. For example, in CORS cross-domain resource sharing, for complex requests, the OPTIONS method is used to send sniff requests to check whether the access permission to the specified resource is available.
+
+## What are the differences between HTTP 1.0 and HTTP 1.1?
+
+HTTP 1.0 and HTTP 1.1 have the following differences:
+
+- For connections, http1.0 uses non-persistent connections by default, while http1.1 uses persistent connections by default. http1.1 avoids the latency required to establish a connection each time a non-persistent connection is used by using persistent connections to allow multiple http requests to reuse the same TCP connection.
+
+- Resource request, in http1.0, there are some phenomena of wasting bandwidth, such as the client only needs a part of an object, while the server sends the whole object, and does not support the resumable function, http1.1 bring in the range header in the request header, which allows only a part of the resource to be requested, the return code is 206 (Partial Content), which makes it easy for developers to choose freely to make full use of bandwidth and connections.
+
+- In terms of cache, http1.0 mainly uses If-Modified-Since and Expires in the header as the criteria for cache judgment, while http1.1 introduces more cache control strategies. For example, Etag, If-Unmodified-Since, If-Match, If-None-Match, and many more alternative cache headers control the cache policy.
+
+- The host field has been added to HTTP 1.1 to specify the domain name of the server. In http1.0, each server is bound to a unique IP address, so the URL in the request message does not pass the hostname. However, with the development of virtual hosting technology, multiple virtual hosts can exist on a single physical server, and they share a single IP address. Hence the host field, which allows requests to be sent to different websites on the same server.
+
+- http1.1 also adds many new request methods over http1.0, such as PUT, HEAD, OPTIONS, and so on.
