@@ -113,3 +113,12 @@ HTTP 1.0 and HTTP 1.1 have the following differences:
 - Header compression: HTTP/2 implements header compression, and since the HTTP 1.1 protocol is stateless, all information must be attached to each request. Therefore, many fields of the request are repeated, such as cookies and User Agent, the same content must be attached to each request, which will waste a lot of bandwidth and affect the speed. HTTP/2 optimizes this by introducing a header compression mechanism. On the one hand, header information is compressed using gzip or compress before being sent. On the other hand, the client and server maintain a header table at the same time, all the fields are stored in this table, generate an index number, and then do not send the same field, only send the index number, which can improve the speed.
 
 - Server push: HTTP/2 allows the server to actively send resources to the client without request, which is called server push. By using server push to push the necessary resources to the client in advance, you can relatively reduce some latency. It should be noted here that the server actively pushes static resources under http2, and WebSocket and the use of SSE and other ways to send real-time data to the client push is different.
+
+## Differences between HTTP and HTTPS
+
+The main differences between HTTP and HTTPS are as follows:
+
+- HTTPS requires a CA certificate and costs a lot. HTTP does not;
+- HTTP is a hypertext transmission protocol, and information is transmitted in plain text. HTTPS is a secure SSL encryption transmission protocol.
+- The port number varies according to the connection mode. The HTTP port number is 80, and the HTTPS port number is 443.
+- HTTP connections are simple and stateless; HTTPS is a network protocol based on SSL and HTTP for encrypted transmission and identity authentication, and is more secure than HTTP.
