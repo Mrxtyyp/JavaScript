@@ -122,3 +122,28 @@ The main differences between HTTP and HTTPS are as follows:
 - HTTP is a hypertext transmission protocol, and information is transmitted in plain text. HTTPS is a secure SSL encryption transmission protocol.
 - The port number varies according to the connection mode. The HTTP port number is 80, and the HTTPS port number is 443.
 - HTTP connections are simple and stateless; HTTPS is a network protocol based on SSL and HTTP for encrypted transmission and identity authentication, and is more secure than HTTP.
+
+## Reasons for the URL length limitation of the GET method
+
+In fact, the HTTP protocol specification does not impose a limit on the url length requested by the get method, which is a specific browser and server limit.
+
+Internet Explorer limits URL length to 2083 bytes (2K+35). Since Internet Explorer has a minimum allowable URL length, as long as the URL does not exceed 2083 bytes during development, it will work in all browsers without problems.
+
+```js
+GET的长度值 = URL（2083）- （你的Domain+Path）-2（2是get请求中?=两个字符的长度）
+```
+
+Let's take a look at the length limit range of URLs in the get method for mainstream browsers:
+
+- Microsoft Internet Explorer (Browser) : Internet Explorer has a maximum URL limit of 2083 characters, if you exceed this number, the submit button does not respond.
+- Firefox (Browser)：The URL length limit for Firefox is 65,536 characters.
+- Safari (Browser) : The maximum URL length is 80,000 characters.
+- Opera (Browser) : The maximum URL length is 190,000 characters.
+- Google (chrome) : The maximum URL length is 8182 characters.
+
+Mainstream servers limit the length of the url in the get method:
+
+- Apache (Server) : Accepts a maximum url length of 8192 characters.
+- Microsoft Internet Information Server(IIS) : Accepts a maximum url length of 16384 characters.
+
+Based on the above data, you can see that the URL length in the get method is no more than 2083 characters, so that all browsers and servers are likely to work properly.
