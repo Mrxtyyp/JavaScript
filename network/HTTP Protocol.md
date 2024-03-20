@@ -172,3 +172,23 @@ Based on the above data, you can see that the URL length in the get method is no
 
 - Under HTTP 1, the browser has a maximum TCP connection count of 6 for a domain name, so it will request multiple times. It can be solved by deploying multiple domain names. This can increase the number of simultaneous requests and speed up the acquisition of page images.
 - Under HTTP 2, many resources can be loaded instantly because it supports multiplexing and can send multiple HTTP requests within a TCP connection.
+
+## Advantages and disadvantages of the HTTP protocol
+
+HTTP is the Hypertext Transfer Protocol, which defines the format and manner of packets exchanged between the client and server.It uses port 80 by default. It uses TCP as the transport layer protocol to ensure the reliability of data transmission.
+
+The HTTP protocol has the following advantages
+
+● Support client/server mode
+● Simple and fast: when the client requests service from the server, it only needs to transmit the request method and path. Because the HTTP protocol is simple, the HTTP server program size is small, so the communication speed is very fast.
+● Connectionless: Connectionless limits the processing of only one request per connection. When the server has processed the client's request and received the client's reply, it disconnects, which saves transmission time.
+● Stateless: HTTP is a stateless protocol, where state refers to the context of the communication. The lack of state means that if the previous information is needed for further processing, it must be retransmitted, potentially increasing the amount of data transferred per connection. On the other hand, the server responds faster when it doesn't need prior information.
+● Flexible: HTTP allows any type of data object to be transferred. The type being transferred is marked by Content-Type.
+
+The HTTP protocol has the following drawbacks:
+● Stateless: HTTP is a stateless protocol and the HTTP server does not keep any information about the client.
+● Plaintext transmission: The packets in the protocol are in the form of text, which is directly exposed to the outside world and is not safe.
+● Insecure
+（1）The communication is in plain text (not encrypted) and the content can be eavesdropped.
+（2）The identity of the communicating party is not authenticated, so it is possible to encounter impersonation.
+（3）The integrity of the packet cannot be proved, so it may have been tampered with.
